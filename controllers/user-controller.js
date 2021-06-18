@@ -38,7 +38,7 @@ const loginUser = async (req,res) =>{
     const resultBoolean = await bcrypt.compare(password,user.hashedPassword)
     
     if (resultBoolean){
-        res.redirect('/login?success=true')
+        res.redirect('/blog')
     }else{
         res.end("Wrong password")
     }
