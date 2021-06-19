@@ -1,9 +1,13 @@
+
+
 const usersJson = require("../db/users/users.json")
 const fs = require('fs');
 
 //hashing the password
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+
+
 
 let updatedJson = usersJson
 
@@ -38,6 +42,9 @@ const loginUser = async (req,res) =>{
     const resultBoolean = await bcrypt.compare(password,user.hashedPassword)
     
     if (resultBoolean){
+
+        //session maintain
+        req.session.user = username
         res.redirect('/blog')
     }else{
         res.end("Wrong password")
