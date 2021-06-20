@@ -18,3 +18,8 @@ Index.js is the server file
   register process controlled in user-controller.js -> registerUser() function
   
  
+When logged
+===========
+/blog
+  > checks login session
+  > shows the blog
