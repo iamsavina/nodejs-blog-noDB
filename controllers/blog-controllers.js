@@ -70,12 +70,13 @@ const addBlog = (req,res)=>{
 }
 
 const logout =(req,res)=>{
-    // res.clearCookie(this.cookie, { path: '/' })
-    // req.logout();
-    // res.redirect('/')
+    req.session.destroy((err) => {
+        if(err) {
+            return console.log(err);
+        }
+        res.json({"status":"deleted"})
+    });
 
-    req.session.destroy()
-    res.json({"status":"ok"})
 }
 
 module.exports = {checkSession,showBlogs,showBlogById,editBlog,deleteBlog,addBlog,logout}
