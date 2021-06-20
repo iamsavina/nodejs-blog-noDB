@@ -6,7 +6,8 @@ const blogRoute = require("./routes/blog")
 
 const app = express()
 
-app.use(express.json())
+app.use(express.json()) //sends json requests
+app.use(express.urlencoded({extended:false})) //data in url
 
 //setup sessions
 app.use(session({secret:'aVerySecretPassword'}))
