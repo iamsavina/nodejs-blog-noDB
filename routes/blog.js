@@ -1,14 +1,27 @@
 const express = require("express")
 const router = express.Router()
 
-const {checkSession, showBlogs, showBlogById} =  require('../controllers/blog-controllers')
+const {checkSession, showBlogs, showBlogById, editBlog, deleteBlog, addBlog} =  require('../controllers/blog-controllers')
+
 
 router.get('/',checkSession,(req,res)=>{
     showBlogs(req,res)
 })
 
+router.post('/add',checkSession,(req,res)=>{
+    addBlog(req,res)
+})
+
 router.get('/:id',checkSession,(req,res)=>{
     showBlogById(req,res)
+})
+
+router.put('/:id/edit',checkSession,(req,res)=>{
+    editBlog(req,res)
+})
+
+router.delete('/delete',checkSession, (req,res)=>{
+    deleteBlog(req,res)
 })
 
 module.exports = router
